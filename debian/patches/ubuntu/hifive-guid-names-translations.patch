@@ -1,0 +1,549 @@
+Description: Update translations after changes to HiFive partition names
+Author: Alexandre Ghiti <alexandre.ghiti@canonical.com>
+Origin: https://github.com/karelzak/util-linux/pull/1469
+Last-Update: 2021-10-12
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: util-linux-2.37.2-4ubuntu1/po/ca.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/ca.po
++++ util-linux-2.37.2-4ubuntu1/po/ca.po
+@@ -5703,11 +5703,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   suprimeix una partició"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/cs.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/cs.po
++++ util-linux-2.37.2-4ubuntu1/po/cs.po
+@@ -5450,12 +5450,12 @@ msgid "Plan 9 partition"
+ msgstr "Oddíl Plan 9"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "FSBL HiFive Unleashed"
++msgid "HiFive FSBL"
++msgstr "FSBL HiFive"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "BBL HiFive Unleashed"
++msgid "HiFive BBL"
++msgstr "BBL HiFive"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/da.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/da.po
++++ util-linux-2.37.2-4ubuntu1/po/da.po
+@@ -5476,12 +5476,12 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9-partition"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/de.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/de.po
++++ util-linux-2.37.2-4ubuntu1/po/de.po
+@@ -5493,12 +5493,12 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9-Partition"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/es.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/es.po
++++ util-linux-2.37.2-4ubuntu1/po/es.po
+@@ -5365,12 +5365,12 @@ msgid "Plan 9 partition"
+ msgstr "Partición del plan 9"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/et.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/et.po
++++ util-linux-2.37.2-4ubuntu1/po/et.po
+@@ -5648,11 +5648,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   kustutada partitsioon"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/eu.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/eu.po
++++ util-linux-2.37.2-4ubuntu1/po/eu.po
+@@ -5602,11 +5602,11 @@ msgid "Plan 9 partition"
+ msgstr "  d          Uneko partizioa ezabatu"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/fi.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/fi.po
++++ util-linux-2.37.2-4ubuntu1/po/fi.po
+@@ -5615,11 +5615,11 @@ msgid "Plan 9 partition"
+ msgstr "poista osio"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/fr.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/fr.po
++++ util-linux-2.37.2-4ubuntu1/po/fr.po
+@@ -5356,12 +5356,12 @@ msgid "Plan 9 partition"
+ msgstr "Partition Plan 9"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/gl.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/gl.po
++++ util-linux-2.37.2-4ubuntu1/po/gl.po
+@@ -5525,11 +5525,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   eliminar a partición BSD"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/hr.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/hr.po
++++ util-linux-2.37.2-4ubuntu1/po/hr.po
+@@ -5424,12 +5424,12 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9 partition"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "FSBL HiFive Unleashed"
++msgid "HiFive FSBL"
++msgstr "FSBL HiFive"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "BBL HiFive Unleashed"
++msgid "HiFive BBL"
++msgstr "BBL HiFive"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/hu.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/hu.po
++++ util-linux-2.37.2-4ubuntu1/po/hu.po
+@@ -5677,11 +5677,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   partíció törlése"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/id.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/id.po
++++ util-linux-2.37.2-4ubuntu1/po/id.po
+@@ -5674,11 +5674,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   hapus sebuah partisi"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/it.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/it.po
++++ util-linux-2.37.2-4ubuntu1/po/it.po
+@@ -5702,11 +5702,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   cancellazione di una partizione"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/ja.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/ja.po
++++ util-linux-2.37.2-4ubuntu1/po/ja.po
+@@ -5368,12 +5368,12 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9 パーティション"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/nl.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/nl.po
++++ util-linux-2.37.2-4ubuntu1/po/nl.po
+@@ -5475,11 +5475,11 @@ msgid "Plan 9 partition"
+ msgstr "Plan-9 partitie"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/pl.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/pl.po
++++ util-linux-2.37.2-4ubuntu1/po/pl.po
+@@ -5344,12 +5344,12 @@ msgid "Plan 9 partition"
+ msgstr "Partycja Plan 9"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/pt_BR.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/pt_BR.po
++++ util-linux-2.37.2-4ubuntu1/po/pt_BR.po
+@@ -5402,12 +5402,12 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9 partição"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/pt.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/pt.po
++++ util-linux-2.37.2-4ubuntu1/po/pt.po
+@@ -5336,12 +5336,12 @@ msgid "Plan 9 partition"
+ msgstr "Partição Plan 9"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/ru.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/ru.po
++++ util-linux-2.37.2-4ubuntu1/po/ru.po
+@@ -5468,11 +5468,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   удаление раздела"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/sl.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/sl.po
++++ util-linux-2.37.2-4ubuntu1/po/sl.po
+@@ -5690,11 +5690,11 @@ msgid "Plan 9 partition"
+ msgstr "   d   zbri�i razdelek"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/sv.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/sv.po
++++ util-linux-2.37.2-4ubuntu1/po/sv.po
+@@ -5410,12 +5410,12 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9-partition"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/tr.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/tr.po
++++ util-linux-2.37.2-4ubuntu1/po/tr.po
+@@ -5410,11 +5410,11 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9 disk bölümü"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/uk.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/uk.po
++++ util-linux-2.37.2-4ubuntu1/po/uk.po
+@@ -5340,12 +5340,12 @@ msgid "Plan 9 partition"
+ msgstr "Розділ Plan 9"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "FSBL HiFive Unleashed"
++msgid "HiFive FSBL"
++msgstr "FSBL HiFive"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "BBL HiFive Unleashed"
++msgid "HiFive BBL"
++msgstr "BBL HiFive"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/util-linux.pot
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/util-linux.pot
++++ util-linux-2.37.2-4ubuntu1/po/util-linux.pot
+@@ -5274,11 +5274,11 @@ msgid "Plan 9 partition"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/vi.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/vi.po
++++ util-linux-2.37.2-4ubuntu1/po/vi.po
+@@ -5500,11 +5500,11 @@ msgid "Plan 9 partition"
+ msgstr "xóa một phân vùng"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1
+Index: util-linux-2.37.2-4ubuntu1/po/zh_CN.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/zh_CN.po
++++ util-linux-2.37.2-4ubuntu1/po/zh_CN.po
+@@ -5369,12 +5369,12 @@ msgid "Plan 9 partition"
+ msgstr "Plan 9 分区"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
+-msgstr "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
++msgstr "HiFive FSBL"
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
+-msgstr "HiFive Unleashed BBL"
++msgid "HiFive BBL"
++msgstr "HiFive BBL"
+ 
+ #: include/pt-mbr-partnames.h:1
+ msgid "Empty"
+Index: util-linux-2.37.2-4ubuntu1/po/zh_TW.po
+===================================================================
+--- util-linux-2.37.2-4ubuntu1.orig/po/zh_TW.po
++++ util-linux-2.37.2-4ubuntu1/po/zh_TW.po
+@@ -5696,11 +5696,11 @@ msgid "Plan 9 partition"
+ msgstr "刪除分割"
+ 
+ #: include/pt-gpt-partnames.h:169
+-msgid "HiFive Unleashed FSBL"
++msgid "HiFive FSBL"
+ msgstr ""
+ 
+ #: include/pt-gpt-partnames.h:170
+-msgid "HiFive Unleashed BBL"
++msgid "HiFive BBL"
+ msgstr ""
+ 
+ #: include/pt-mbr-partnames.h:1

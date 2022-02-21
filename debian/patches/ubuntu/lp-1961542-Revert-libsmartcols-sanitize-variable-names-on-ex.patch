@@ -1,0 +1,124 @@
+From 2a53e05a0b1e9a3fc3d02c3b53fe51517665d5b5
+From: Matthew Ruffell <matthew.ruffell@canonical.com>
+Date: Mon, 21 Feb 2022 13:05:30 +1300
+Description: 
+
+    Revert "libsmartcols: sanitize variable names on export output"
+    
+    This reverts commit 58b510e5805d8350c31bfb81a47bcd38ea9fdd7e.
+    
+    The change to shell parsable output of libsmartcols for lsblk -P / --pairs
+    broke core tools such as MAAS and curtin. While MAAS and curtin have been
+    patched to use -J and other mechanisms, older versions of MAAS will break
+    when deploying Ubuntu 22.04 with util-linux 2.37.
+    
+    The behaviour has been reverted upstream, and shell parsable output is now
+    hidden behind -y / --shell, which is expected to be released with
+    util-linux 2.38. Since there is a lot of code changes involved, it is
+    safer to revert this commit than to backprt the 10+ upstream commits
+    required.
+    
+    This patch is to be removed when util-linux is merged with 2.38.
+
+Bug: https://github.com/util-linux/util-linux/issues/1594
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1961542
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2022-02-21
+
+Index: util-linux-2.37.2/include/carefulputc.h
+===================================================================
+--- util-linux-2.37.2.orig/include/carefulputc.h	2022-02-21 13:16:55.708164777 +1300
++++ util-linux-2.37.2/include/carefulputc.h	2022-02-21 13:16:55.704164720 +1300
+@@ -71,21 +71,5 @@
+ 	}
+ }
+ 
+-static inline void fputs_shell_ident(const char *data, FILE *out)
+-{
+-	const char *p = data;
+-
+-	/* convert "1FOO" to "_1FOO" */
+-	if (p && !isalpha(*p))
+-		fputc('_', out);
+-
+-	/* replace all "bad" chars with "_" */
+-	for (p = data; p && *p; p++) {
+-		if (!isalnum(*p))
+-			fputc('_', out);
+-		else
+-			fputc(*p, out);
+-	}
+-}
+ 
+ #endif  /*  _CAREFULPUTC_H  */
+Index: util-linux-2.37.2/libsmartcols/src/print.c
+===================================================================
+--- util-linux-2.37.2.orig/libsmartcols/src/print.c	2022-02-21 13:16:55.708164777 +1300
++++ util-linux-2.37.2/libsmartcols/src/print.c	2022-02-21 13:16:55.704164720 +1300
+@@ -588,10 +588,7 @@
+ 		return 0;
+ 
+ 	case SCOLS_FMT_EXPORT:
+-		fputs_shell_ident(name, tb->out);
+-		if (endswith(name, "%"))
+-			fputs("PCT", tb->out);
+-		fputc('=', tb->out);
++		fprintf(tb->out, "%s=", name);
+ 		fputs_quoted(data, tb->out);
+ 		if (!is_last)
+ 			fputs(colsep(tb), tb->out);
+Index: util-linux-2.37.2/libsmartcols/src/table.c
+===================================================================
+--- util-linux-2.37.2.orig/libsmartcols/src/table.c	2022-02-21 13:16:55.708164777 +1300
++++ util-linux-2.37.2/libsmartcols/src/table.c	2022-02-21 13:16:55.704164720 +1300
+@@ -1078,10 +1078,6 @@
+  * Enable/disable export output format (COLUMNAME="value" ...).
+  * The parsable output formats (export and raw) are mutually exclusive.
+  *
+- * Note that COLUMNAME maybe be modified on output to contains only chars
+- * allowed as shell variable identifiers, for example MIN-IO and FSUSE% will be
+- * MIN_IO and FSUSE_PCT.
+- *
+  * Returns: 0 on success, negative number in case of an error.
+  */
+ int scols_table_enable_export(struct libscols_table *tb, int enable)
+Index: util-linux-2.37.2/misc-utils/findmnt.8.adoc
+===================================================================
+--- util-linux-2.37.2.orig/misc-utils/findmnt.8.adoc	2022-02-21 13:16:55.708164777 +1300
++++ util-linux-2.37.2/misc-utils/findmnt.8.adoc	2022-02-21 13:16:55.704164720 +1300
+@@ -102,7 +102,7 @@
+ Output almost all available columns. The columns that require *--poll* are not included.
+ 
+ *-P*, *--pairs*::
+-Produce output in the form of key="value" pairs. All potentially unsafe value characters are hex-escaped (\x<code>). The key (variable name) will be modified to contain only characters allowed for a shell variable identifiers, for example, FS_OPTIONS and USE_PCT instead of FS-OPTIONS and USE%.
++Produce output in the form of key="value" pairs. All potentially unsafe value characters are hex-escaped (\x<code>).
+ 
+ *-p*, *--poll*[_=list_]::
+ Monitor changes in the _/proc/self/mountinfo_ file. Supported actions are: mount, umount, remount and move. More than one action may be specified in a comma-separated list. All actions are monitored by default.
+Index: util-linux-2.37.2/misc-utils/lsblk.8.adoc
+===================================================================
+--- util-linux-2.37.2.orig/misc-utils/lsblk.8.adoc	2022-02-21 13:16:55.708164777 +1300
++++ util-linux-2.37.2/misc-utils/lsblk.8.adoc	2022-02-21 13:16:55.704164720 +1300
+@@ -84,7 +84,7 @@
+ Output all available columns.
+ 
+ *-P*, *--pairs*::
+-Produce output in the form of key="value" pairs. The output lines are still ordered by dependencies. All potentially unsafe value characters are hex-escaped (\x<code>). The key (variable name) will be modified to contain only characters allowed for a shell variable identifiers, for example, MIN_IO and FSUSE_PCT instead of MIN-IO and FSUSE%.
++Produce output in the form of key="value" pairs. The output lines are still ordered by dependencies. All potentially unsafe value characters are hex-escaped (\x<code>).
+ 
+ *-p*, *--paths*::
+ Print full device paths.
+Index: util-linux-2.37.2/sys-utils/lsipc.1.adoc
+===================================================================
+--- util-linux-2.37.2.orig/sys-utils/lsipc.1.adoc	2022-02-21 13:16:55.708164777 +1300
++++ util-linux-2.37.2/sys-utils/lsipc.1.adoc	2022-02-21 13:16:55.704164720 +1300
+@@ -49,7 +49,7 @@
+ Show creator and owner.
+ 
+ *-e*, *--export*::
+-Produce output in the form of key="value" pairs. All potentially unsafe value characters are hex-escaped (\x<code>). The key (variable name) will be modified to contain only characters allowed for a shell variable identifiers, for example, USE_PCT instead of USE%.
++Produce output in the form of key="value" pairs. All potentially unsafe value characters are hex-escaped (\x<code>).
+ 
+ *-J*, *--json*::
+ Use the JSON output format.
