@@ -1,3 +1,36 @@
+util-linux (2.37.2-4ubuntu3.3) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Improper neutralization of escape sequences in wall
+    - debian/patches/upstream/CVE-2024-28085-pre1.patch: correctly handle
+      wide characters in include/carefulputc.h, login-utils/last.c,
+      term-utils/write.c.
+    - debian/patches/upstream/CVE-2024-28085-pre2.patch: convert homebrew
+      buffering to open_memstream() in term-utils/wall.c.
+    - debian/patches/upstream/CVE-2024-28085-pre3.patch: use
+      fputs_careful() in include/carefulputc.h, login-utils/last.c,
+      term-utils/wall.c, term-utils/write.c.
+    - debian/patches/upstream/CVE-2024-28085.patch: consolidate output on
+      the terminal in term-utils/wall.c.
+    - CVE-2024-28085
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 22 Mar 2024 08:25:19 -0400
+
+util-linux (2.37.2-4ubuntu3.2) jammy; urgency=medium
+
+  * debian/patches/upstream/CVE-2022-0563.patch: Remove readline support
+    from chsh and chfn. Ubuntu does not ship these binaries, so this
+    only impacts parties building them from Ubuntu source. (CVE-2022-0563)
+    (LP: #2048092)
+
+ -- dann frazier <dann.frazier@canonical.com>  Thu, 04 Jan 2024 11:41:57 -0700
+
+util-linux (2.37.2-4ubuntu3.1) jammy; urgency=low
+
+  * Add ARM core support for Grace systems (LP: #2019856)
+    - /d/p/ubuntu/lp-2019856-add-missing-arm-cores.patch 
+
+ -- Heather Lemon <heather.lemon@canonical.com>  Fri, 19 May 2023 15:37:24 +0000
+
 util-linux (2.37.2-4ubuntu3) jammy; urgency=medium
 
   * Revert the change to libsmartcols that outputs shell parsable column

@@ -15,3 +15,9 @@ upstream/CVE-2021-3995-2.patch
 upstream/CVE-2021-3996-1.patch
 upstream/CVE-2021-3996-2.patch
 ubuntu/lp-1961542-Revert-libsmartcols-sanitize-variable-names-on-ex.patch
+ubuntu/lp-2019856-add-missing-arm-cores.patch
+upstream/CVE-2022-0563.patch
+upstream/CVE-2024-28085-pre1.patch
+upstream/CVE-2024-28085-pre2.patch
+upstream/CVE-2024-28085-pre3.patch
+upstream/CVE-2024-28085.patch
