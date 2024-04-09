@@ -1,3 +1,12 @@
+util-linux (2.37.2-4ubuntu3.4) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Improper neutralization of escape sequences in wall
+    - debian/rules: build with --disable-use-tty-group to properly remove
+      setgid bit from both wall and write.
+    - CVE-2024-28085
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 09 Apr 2024 11:32:56 -0400
+
 util-linux (2.37.2-4ubuntu3.3) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Improper neutralization of escape sequences in wall
