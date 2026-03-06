@@ -1,0 +1,112 @@
+Description: Temporarily drop effective capabilities in --pty mode
+ In --pty mode, su proxies data between stdin/stdout (controllable by the
+ possibly unprivileged invoking user) and the pty master (with its associated
+ slave controllable by the possibly unprivileged target user). This can be
+ abused for confused deputy attacks on kernel vulnerabilities, as the
+ privileged su parent by default retains all capabilities. This patch has su
+ temporarily drop effective capabilities and only retain CAP_KILL during this
+ proxying.
+ .
+ Credit: John Johansen <john.johansen@canonical.com> for suggesting the idea of
+ hardening su.
+Author: Luci Stanescu <luci.stanescu@canonical.com>
+Reviewed-by: Marc Deslauriers <marc.deslauriers@ubuntu.com>
+Reviewed-by: Seth Arnold <seth.arnold@canonical.com>
+Last-Update: 2026-03-06
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/login-utils/su-common.c
++++ b/login-utils/su-common.c
+@@ -36,6 +36,9 @@
+ #include <sys/wait.h>
+ #include <syslog.h>
+ #include <utmpx.h>
++#include <unistd.h>
++#include <sys/syscall.h>
++#include <linux/capability.h>
+ 
+ #ifdef HAVE_PTY
+ # include <pty.h>
+@@ -515,9 +518,54 @@ static void parent_setup_signals(struct
+ 	}
+ }
+ 
++struct capabilities_state {
++	struct __user_cap_data_struct data[2];
++};
++
++static void init_capabilities_state(struct capabilities_state *state) {
++	memset(state, 0, sizeof(*state));
++}
++
++static int lower_capabilities(struct capabilities_state *state, uint64_t caps_mask_retain) {
++	int rc;
++	struct __user_cap_header_struct hdr;
++	struct __user_cap_data_struct data[2];
++
++	memset(&hdr, 0, sizeof(hdr));
++	memset(data, 0, sizeof(data));
++
++	// Supported from Linux 2.6.26 onwards.
++	// 64-bit capabilities (hence two data structs)
++	hdr.version = _LINUX_CAPABILITY_VERSION_3;
++	hdr.pid = 0; // Current thread
++
++	rc = syscall(SYS_capget, &hdr, data);
++	if (rc == -1) {
++		return -1;
++	}
++	memcpy(state->data, data, sizeof(data));
++
++	data[0].effective &= caps_mask_retain;
++	data[1].effective &= caps_mask_retain >> 32;
++
++	return syscall(SYS_capset, &hdr, data);
++}
++
++static int restore_capabilities(const struct capabilities_state *state) {
++	struct __user_cap_header_struct hdr;
++
++	// Supported from Linux 2.6.26 onwards.
++	// 64-bit capabilities (hence two data structs)
++	hdr.version = _LINUX_CAPABILITY_VERSION_3;
++	hdr.pid = 0; // Current thread
++
++	return syscall(SYS_capset, &hdr, state->data);
++}
++
+ static void create_watching_parent(struct su_context *su)
+ {
+ 	int status;
++	struct capabilities_state caps_state;
+ 
+ 	DBG(MISC, ul_debug("forking..."));
+ #ifdef USE_PTY
+@@ -571,7 +619,27 @@ static void create_watching_parent(struc
+ 	if (su->force_pty) {
+ 		ul_pty_set_child(su->pty, su->child);
+ 
++		/*
++		 * Temporarily lower effective capabilities during proxying of
++		 * data between current stdin/stdout and pty master, to avoid
++		 * su being abused on confused deputy attacks by having it
++		 * write to user-selected file descriptors while having
++		 * capabilities.
++		 *
++		 * CAP_KILL needs to be retained in order to send signals to
++		 * the child process.
++		 *
++		 * Capabilities need to be restored for cleanup during
++		 * pam_close_session(), in case PAM modules expect them.
++		 */
++		init_capabilities_state(&caps_state);
++		if (lower_capabilities(&caps_state, (1 << CAP_KILL)) != 0) {
++			err(EXIT_FAILURE, _("cannot lower capabilities"));
++		}
+ 		ul_pty_proxy_master(su->pty);
++		if (restore_capabilities(&caps_state) != 0) {
++			warn(_("cannot restore capabilities"));
++		}
+ 
+ 		/* ul_pty_proxy_master() keeps classic signal handler are out of game */
+ 		caught_signal = ul_pty_get_delivered_signal(su->pty);

@@ -1,3 +1,11 @@
+util-linux (2.37.2-4ubuntu3.5) jammy-security; urgency=medium
+
+  * d/p/ubuntu/su-pty-drop-caps.patch: harden 'su --pty' to temporarily lower
+    capabilities while proxying between stdin/stdout and the pty master. This
+    is to avoid su from being used to exploit kernel vulnerabilities.
+
+ -- Luci Stanescu <luci.stanescu@canonical.com>  Fri, 06 Mar 2026 18:10:04 +0200
+
 util-linux (2.37.2-4ubuntu3.4) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Improper neutralization of escape sequences in wall

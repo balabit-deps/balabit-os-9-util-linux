@@ -21,3 +21,4 @@ upstream/CVE-2024-28085-pre1.patch
 upstream/CVE-2024-28085-pre2.patch
 upstream/CVE-2024-28085-pre3.patch
 upstream/CVE-2024-28085.patch
+ubuntu/su-pty-drop-caps.patch
